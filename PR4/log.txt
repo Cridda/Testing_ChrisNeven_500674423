@@ -1,0 +1,504 @@
+[status]
+Playing test suite TESTSUITE_Voetbalprimeur
+[status]
+Playing macro RegisterAndSignIn
+[info]
+Executing:  | echo | starting register |  | 
+[echo]
+starting register
+[info]
+Executing:  | store | medium | !replayspeed | 
+[info]
+Executing:  | open | https://www.voetbalprimeur.nl/ |  | 
+[info]
+Executing:  | assertTitle | De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl |  | 
+[info]
+Executing:  | click | //*[@id="login"]/a |  | 
+[info]
+Executing:  | click | //*[@id="ui-id-4"] |  | 
+[info]
+Executing:  | storeEval | Math.random().toString(36).substring(7) | randomString | 
+[info]
+Executing:  | storeEval | Math.random().toString(30).substring(4) | randomPassword | 
+[info]
+Executing:  | storeEval | `${randomString}@hotmail.com` | email | 
+[info]
+Executing:  | type | //*[@id="registerForm"]/div/input[1] | ${randomString} | 
+[info]
+Executing:  | type | //*[@id="registerForm"]/div/div[1]/input | ${email} | 
+[info]
+Executing:  | type | //*[@id="registerForm"]/div/input[2] | ${randomPassword} | 
+[info]
+Executing:  | type | //*[@id="registerForm"]/div/input[3] | ${randomPassword} | 
+[info]
+Executing:  | store | ${randomString} | !csvLine | 
+[info]
+Executing:  | store | ${randomPassword} | !csvLine | 
+[info]
+Executing:  | csvSave | testuserscsv |  | 
+[info]
+Executing:  | select | //*[@id="registerForm"]/div/select[1] | label=Ajax | 
+[info]
+Executing:  | select | //*[@id="registerForm"]/div/select[2] | label=Arsenal FC | 
+[info]
+Executing:  | selectFrame | //*[@id="popupRecaptcha"]/div/div/iframe |  | 
+[info]
+Executing:  | click | /html/body/div[2]/div[3]/div[1]/div/div/span/div[5] |  | 
+[info]
+Executing:  | pause | 3000 |  | 
+[info]
+Executing:  | selectFrame | relative=top |  | 
+[info]
+Executing:  | click | id=agree_1 |  | 
+[info]
+Executing:  | click | name=register |  | 
+[info]
+Executing:  | echo | register succeeded | green | 
+[echo]
+register succeeded
+[info]
+Executing:  | echo | logging in with created user |  | 
+[echo]
+logging in with created user
+[info]
+Executing:  | click | id=ui-id-3 |  | 
+[info]
+Executing:  | click | name=login |  | 
+[info]
+Executing:  | click | //*[@class="close_icon"] |  | 
+[info]
+Executing:  | click |  //*[@id="login"]/a[1] |  | 
+[info]
+Executing:  | label |  //*[@id="login"]/a[1] |  | 
+[info]
+Executing:  | assertText |  //*[@class="uname"] |  ${randomString} | 
+[info]
+Executing:  | echo | user logged in successfully | green | 
+[echo]
+user logged in successfully
+[info]
+Executing:  | echo | Registered a user and logged in the user successfully | #shownotification | 
+[echo]
+Registered a user and logged in the user successfully
+[info]
+Executing:  | pause | 1000 |  | 
+[info]
+Executing:  | echo | Logging out | echo | 
+[echo]
+Logging out
+[info]
+Executing:  | click | //*[@class="logout"] |  | 
+[info]
+Executing:  | echo | Logged out successfully |  | 
+[echo]
+Logged out successfully
+[info]
+Macro completed (Runtime 46.95s)
+[status]
+Playing macro BecomeFanOfClubs
+[info]
+Executing:  | echo | starting with logging in |  | 
+[echo]
+starting with logging in
+[info]
+Executing:  | store | medium | !replayspeed | 
+[info]
+Executing:  | open | https://www.voetbalprimeur.nl/ |  | 
+[info]
+Executing:  | assertTitle | De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl |  | 
+[info]
+Executing:  | click | //*[@id="login"]/a |  | 
+[info]
+Executing:  | click | id=login |  | 
+[info]
+Executing:  | type | name=username | keesvanwees | 
+[info]
+Executing:  | storeEval | document.getElementsByName("username")[0].value | inputname | 
+[info]
+Executing:  | type | name=password | test123 | 
+[info]
+Executing:  | click | name=login |  | 
+[info]
+Executing:  | echo | user logged in | green | 
+[echo]
+user logged in
+[info]
+Executing:  | click | //*[@title="Clubs"] |  | 
+[info]
+Executing:  | csvRead | newinfo.csv |  | 
+[info]
+Executing:  | store | 1 | loopcounter | 
+[info]
+Executing:  | while | (${loopcounter} <= ${!csvReadMaxRow}) |  | 
+[info]
+Executing:  | store | fast | !replayspeed | 
+[info]
+Executing:  | storeEval | ${!csvReadLineNumber}+1 | !csvReadLineNumber | 
+[info]
+Executing:  | echo | status = ${!csvReadStatus}, nextLine = ${!csvReadLineNumber}, loopcounter = ${loopcounter} |  | 
+[echo]
+status = OK, nextLine = 2, loopcounter = 1
+[info]
+Executing:  | echo | clubAboutToBecomeFanOf = ${!COL1} |  | 
+[echo]
+clubAboutToBecomeFanOf = Ajax
+[info]
+Executing:  | type | id=club_input | ${!COL1} | 
+[info]
+Executing:  | pause | 1000 |  | 
+[info]
+Executing:  | click | //*[@id="ui-id-5"]/li[1]/a |  | 
+[info]
+Executing:  | click | //*[@class="follow_player"]/button |  | 
+[info]
+Executing:  | pause | 1500 |  | 
+[info]
+Executing:  | click | //*[@title="Clubs"] |  | 
+[info]
+Executing:  | storeEval | ${loopcounter}+1 | loopcounter | 
+[info]
+Executing:  | store | true | !errorIgnore | 
+[info]
+Executing:  | csvRead | newinfo.csv | loopcounter | 
+[info]
+Executing:  | store | false | !errorIgnore | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${!csvReadMaxRow}) |  | 
+[info]
+Executing:  | store | fast | !replayspeed | 
+[info]
+Executing:  | storeEval | ${!csvReadLineNumber}+1 | !csvReadLineNumber | 
+[info]
+Executing:  | echo | status = ${!csvReadStatus}, nextLine = ${!csvReadLineNumber}, loopcounter = ${loopcounter} |  | 
+[echo]
+status = OK, nextLine = 3, loopcounter = 2
+[info]
+Executing:  | echo | clubAboutToBecomeFanOf = ${!COL1} |  | 
+[echo]
+clubAboutToBecomeFanOf = Barcelona
+[info]
+Executing:  | type | id=club_input | ${!COL1} | 
+[info]
+Executing:  | pause | 1000 |  | 
+[info]
+Executing:  | click | //*[@id="ui-id-5"]/li[1]/a |  | 
+[info]
+Executing:  | click | //*[@class="follow_player"]/button |  | 
+[info]
+Executing:  | pause | 1500 |  | 
+[info]
+Executing:  | click | //*[@title="Clubs"] |  | 
+[info]
+Executing:  | storeEval | ${loopcounter}+1 | loopcounter | 
+[info]
+Executing:  | store | true | !errorIgnore | 
+[info]
+Executing:  | csvRead | newinfo.csv | loopcounter | 
+[info]
+Executing:  | store | false | !errorIgnore | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${!csvReadMaxRow}) |  | 
+[info]
+Executing:  | store | fast | !replayspeed | 
+[info]
+Executing:  | storeEval | ${!csvReadLineNumber}+1 | !csvReadLineNumber | 
+[info]
+Executing:  | echo | status = ${!csvReadStatus}, nextLine = ${!csvReadLineNumber}, loopcounter = ${loopcounter} |  | 
+[echo]
+status = OK, nextLine = 4, loopcounter = 3
+[info]
+Executing:  | echo | clubAboutToBecomeFanOf = ${!COL1} |  | 
+[echo]
+clubAboutToBecomeFanOf = AC Milan
+[info]
+Executing:  | type | id=club_input | ${!COL1} | 
+[info]
+Executing:  | pause | 1000 |  | 
+[info]
+Executing:  | click | //*[@id="ui-id-5"]/li[1]/a |  | 
+[info]
+Executing:  | click | //*[@class="follow_player"]/button |  | 
+[info]
+Executing:  | pause | 1500 |  | 
+[info]
+Executing:  | click | //*[@title="Clubs"] |  | 
+[info]
+Executing:  | storeEval | ${loopcounter}+1 | loopcounter | 
+[info]
+Executing:  | store | true | !errorIgnore | 
+[info]
+Executing:  | csvRead | newinfo.csv | loopcounter | 
+[info]
+Executing:  | store | false | !errorIgnore | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${!csvReadMaxRow}) |  | 
+[info]
+Executing:  | store | fast | !replayspeed | 
+[info]
+Executing:  | storeEval | ${!csvReadLineNumber}+1 | !csvReadLineNumber | 
+[info]
+Executing:  | echo | status = ${!csvReadStatus}, nextLine = ${!csvReadLineNumber}, loopcounter = ${loopcounter} |  | 
+[echo]
+status = OK, nextLine = 5, loopcounter = 4
+[info]
+Executing:  | echo | clubAboutToBecomeFanOf = ${!COL1} |  | 
+[echo]
+clubAboutToBecomeFanOf = Anderlecht
+[info]
+Executing:  | type | id=club_input | ${!COL1} | 
+[info]
+Executing:  | pause | 1000 |  | 
+[info]
+Executing:  | click | //*[@id="ui-id-5"]/li[1]/a |  | 
+[info]
+Executing:  | click | //*[@class="follow_player"]/button |  | 
+[info]
+Executing:  | pause | 1500 |  | 
+[info]
+Executing:  | click | //*[@title="Clubs"] |  | 
+[info]
+Executing:  | storeEval | ${loopcounter}+1 | loopcounter | 
+[info]
+Executing:  | store | true | !errorIgnore | 
+[info]
+Executing:  | csvRead | newinfo.csv | loopcounter | 
+[error][ignored]
+end of csv file reached
+[info]
+Executing:  | store | false | !errorIgnore | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${!csvReadMaxRow}) |  | 
+[info]
+Executing:  | echo | Became fan of ${!csvReadMaxRow} clubs! | #shownotification | 
+[echo]
+Became fan of 4 clubs!
+[info]
+Macro completed (Runtime 109.95s)
+[status]
+Playing macro UnfanClubs
+[info]
+Executing:  | echo | Check if user is logged in |  | 
+[echo]
+Check if user is logged in
+[info]
+Executing:  | store | fast | !replayspeed | 
+[info]
+Executing:  | verifyElementPresent | //*[@class="logout"] |  | 
+[info]
+Executing:  | click | //*[@class="profile_user"] |  | 
+[info]
+Executing:  | store | 1 | loopcounter | 
+[info]
+Executing:  | storeEval | (document.getElementsByClassName("user_fav")[1].childElementCount - 1) | amountOfClubs | 
+[info]
+Executing:  | while | (${loopcounter} <= ${amountOfClubs}) |  | 
+[info]
+Executing:  | echo | loooooop = ${loopcounter} amountOfClubs = ${amountOfClubs} |  | 
+[echo]
+loooooop = 1 amountOfClubs = 4
+[info]
+Executing:  | click | /html/body/main/div[2]/div[3]/ul[2]/li[2]/button |  | 
+[info]
+Executing:  | pause | 500 |  | 
+[info]
+Executing:  | storeEval | ${loopcounter} + 1 | loopcounter | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${amountOfClubs}) |  | 
+[info]
+Executing:  | echo | loooooop = ${loopcounter} amountOfClubs = ${amountOfClubs} |  | 
+[echo]
+loooooop = 2 amountOfClubs = 4
+[info]
+Executing:  | click | /html/body/main/div[2]/div[3]/ul[2]/li[2]/button |  | 
+[info]
+Executing:  | pause | 500 |  | 
+[info]
+Executing:  | storeEval | ${loopcounter} + 1 | loopcounter | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${amountOfClubs}) |  | 
+[info]
+Executing:  | echo | loooooop = ${loopcounter} amountOfClubs = ${amountOfClubs} |  | 
+[echo]
+loooooop = 3 amountOfClubs = 4
+[info]
+Executing:  | click | /html/body/main/div[2]/div[3]/ul[2]/li[2]/button |  | 
+[info]
+Executing:  | pause | 500 |  | 
+[info]
+Executing:  | storeEval | ${loopcounter} + 1 | loopcounter | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${amountOfClubs}) |  | 
+[info]
+Executing:  | echo | loooooop = ${loopcounter} amountOfClubs = ${amountOfClubs} |  | 
+[echo]
+loooooop = 4 amountOfClubs = 4
+[info]
+Executing:  | click | /html/body/main/div[2]/div[3]/ul[2]/li[2]/button |  | 
+[info]
+Executing:  | pause | 500 |  | 
+[info]
+Executing:  | storeEval | ${loopcounter} + 1 | loopcounter | 
+[info]
+Executing:  | endWhile |  |  | 
+[info]
+Executing:  | while | (${loopcounter} <= ${amountOfClubs}) |  | 
+[info]
+Executing:  | echo | All clubs are deleted from fan area | #shownotification | 
+[echo]
+All clubs are deleted from fan area
+[info]
+Macro completed (Runtime 9.95s)
+[status]
+Playing macro LoginWithSpecificUser
+[info]
+Executing:  | echo | starting login |  | 
+[echo]
+starting login
+[info]
+Executing:  | store | medium | !replayspeed | 
+[info]
+Executing:  | open | https://www.voetbalprimeur.nl/ |  | 
+[info]
+Executing:  | assertTitle | De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl |  | 
+[info]
+Executing:  | store | true | !errorignore | 
+[info]
+Executing:  | verifyElementPresent | //*[@class="logout"] |  | 
+[info]
+Executing:  | store | false | !errorignore | 
+[info]
+Executing:  | if | ${!statusOK} |  | 
+[info]
+Executing:  | echo | The logout element is there, but it shouldn't be because the user isn't logged in yet |  | 
+[echo]
+The logout element is there, but it shouldn't be because the user isn't logged in yet
+[info]
+Executing:  | click | //*[@class="logout"] |  | 
+[info]
+Executing:  | pause | 1000 |  | 
+[info]
+Executing:  | endif |  |  | 
+[info]
+Executing:  | click | //*[@id="login"]/a |  | 
+[info]
+Executing:  | click | id=login |  | 
+[info]
+Executing:  | type | name=username | keesvanwees | 
+[info]
+Executing:  | storeEval | document.getElementsByName("username")[0].value | inputname | 
+[info]
+Executing:  | store | keesvanwees | name | 
+[info]
+Executing:  | type | name=password | test123 | 
+[info]
+Executing:  | click | name=login |  | 
+[info]
+Executing:  | echo | login succeeded | green | 
+[echo]
+login succeeded
+[info]
+Executing:  | click | //*[@class="profile_user"] |  | 
+[info]
+Executing:  | assertText | //*[@class="uname"] | ${inputname} | 
+[info]
+Executing:  | echo | Logging in and validated username with username used to log in | #shownotification | 
+[echo]
+Logging in and validated username with username used to log in
+[info]
+Macro completed (Runtime 27.44s)
+[status]
+Playing macro ReadArticle
+[info]
+Executing:  | store | medium | !replayspeed | 
+[info]
+Executing:  | open | https://www.voetbalprimeur.nl/ |  | 
+[info]
+Executing:  | assertTitle | De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl |  | 
+[info]
+Executing:  | storeTitle | //*[@id="list_featured"]/li[1]/article/a/figure/img | articleName | 
+[info]
+Executing:  | click | //*[@id="list_featured"]/li[1]/article/a/figure |  | 
+[info]
+Executing:  | storeTitle |  | articleTitle | 
+[info]
+Executing:  | open | https://www.voetbalprimeur.nl/ |  | 
+[info]
+Executing:  | click | //*[@id="list_featured"]/li[1]/article/a/figure |  | 
+[info]
+Executing:  | echo | ${articleTitle} | #shownotification | 
+[echo]
+Locadia matchwinner voor Brighton, Spurs gaat op Wembley verrassend onderuit | Voetbalprimeur
+[info]
+Executing:  | echo | ReadArticle is completed. | #shownotification | 
+[echo]
+ReadArticle is completed.
+[info]
+Macro completed (Runtime 13.92s)
+[status]
+Playing macro CommentOnArticle
+[info]
+Executing:  | echo | Starting CommentOnArticle |  | 
+[echo]
+Starting CommentOnArticle
+[info]
+Executing:  | echo | Check if user is logged in |  | 
+[echo]
+Check if user is logged in
+[info]
+Executing:  | store | medium | !replayspeed | 
+[info]
+Executing:  | verifyElementPresent | //*[@class="logout"] |  | 
+[info]
+Executing:  | echo | User is logged in | green | 
+[echo]
+User is logged in
+[info]
+Executing:  | click | //*[@class="news"] |  | 
+[info]
+Executing:  | storeEval | document.getElementById("cat_news1").childElementCount | amountOfArticles | 
+[info]
+Executing:  | storeEval | Math.floor(Math.random() * ${amountOfArticles}) + 1   | randomArticle | 
+[info]
+Executing:  | click | //*[@id="cat_news1"]/li[${randomArticle}]/a |  | 
+[info]
+Executing:  | visualVerify | gubQkH_dpi_192.png |  | 
+[info]
+Executing:  | type | name=comment | Niet eens. | 
+[info]
+Executing:  | sendKeys | name=submit | ${KEY_ENTER} | 
+[info]
+Executing:  | click | name=submit | ${KEY_ENTER} | 
+[info]
+Executing:  | echo | Added a comment to a random article | #shownotification | 
+[echo]
+Added a comment to a random article
+[info]
+Macro completed (Runtime 31.59s)
+[info]
+Test Suite name: TESTSUITE_Voetbalprimeur
+Start Time: Sat Dec 29 2018 19:18:50 GMT+0100 (Midden-Europese standaardtijd)
+Overall status: OK, Runtime: 241.45s
+Macro run: 6
+Success: 6
+Failure: 0
+Macro executed:
+RegisterAndSignIn (OK, Runtime: 47.09s)
+BecomeFanOfClubs (OK, Runtime: 110.25s)
+UnfanClubs (OK, Runtime: 10.07s)
+LoginWithSpecificUser (OK, Runtime: 27.52s)
+ReadArticle (OK, Runtime: 14.01s)
+CommentOnArticle (OK, Runtime: 31.88s)

@@ -1,0 +1,71 @@
+{
+  "Name": "UnfanClubs",
+  "CreationDate": "2018-12-29",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "Check if user is logged in",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "fast",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "verifyElementPresent",
+      "Target": "//*[@class=\"logout\"]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"profile_user\"]",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "1",
+      "Value": "loopcounter"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "(document.getElementsByClassName(\"user_fav\")[1].childElementCount - 1)",
+      "Value": "amountOfClubs"
+    },
+    {
+      "Command": "while",
+      "Target": "(${loopcounter} <= ${amountOfClubs})",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "loooooop = ${loopcounter} amountOfClubs = ${amountOfClubs}",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "/html/body/main/div[2]/div[3]/ul[2]/li[2]/button",
+      "Value": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "500",
+      "Value": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "${loopcounter} + 1",
+      "Value": "loopcounter"
+    },
+    {
+      "Command": "endWhile",
+      "Target": "",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "All clubs are deleted from fan area",
+      "Value": "#shownotification"
+    }
+  ]
+}

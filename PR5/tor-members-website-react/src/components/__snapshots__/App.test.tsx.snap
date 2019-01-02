@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders the homepage 1`] = `
+Array [
+  .c1 {
+  -webkit-animation: dnPoJW infinite 1s linear;
+  animation: dnPoJW infinite 1s linear;
+  height: 80px;
+}
+
+.c0 {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.c2 {
+  font-size: 1.5em;
+}
+
+<header
+    class="c0"
+  >
+    <img
+      alt="logo"
+      class="c1"
+      src="test-file-stub"
+    />
+    <h1
+      class="c2"
+    >
+      Welcome to React
+    </h1>
+  </header>,
+  .c0 {
+  font-size: large;
+}
+
+<p
+    class="c0"
+  >
+    To get started, edit 
+    <code>
+      src/components/App.js
+    </code>
+     and save to reload.
+  </p>,
+]
+`;

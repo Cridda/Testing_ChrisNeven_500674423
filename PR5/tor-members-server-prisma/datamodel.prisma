@@ -1,0 +1,101 @@
+type User {
+    id: ID! @unique
+    email: String! @unique
+    password: String
+    firstName: String!
+    lastName: String!
+    address: Address!
+    phone: String!
+    accommodations: [Accommodation!]!
+}
+
+type Address {
+    id: ID! @unique
+    address: String!
+    postcode: String!
+    city: String!
+}
+
+type TranslatableString {
+    id: ID! @unique
+    en: String
+    nl: String
+    de: String
+}
+
+type City {
+    id: ID! @unique
+    name: String
+}
+
+type Accommodation {
+    id: ID! @unique
+    name: String!
+    code: Int!
+    type: AccommodationType!
+    city: City!
+    description: TranslatableString! @relation(name: "AccommodationDescription")
+    longDescription: TranslatableString @relation(name: "AccommodationLongDescription")
+    slug: String!
+    livingArea: Int!
+    outsideArea: Int!
+    contactPerson: String!
+    contactPhone: String!
+    keyAddress: Address! @relation(name: "AccommodationKeyAdress")
+    address: Address! @relation(name: "AccommodationAddress")
+    minCapacity: Int!
+    maxCapacity: Int!
+    photos: [Photo!]!
+    owner: User
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    bedrooms: [Bedroom!]!
+    bathrooms: [Bathroom!]!
+    sites: [Site!]!
+    features: [AccommodationFeature!]!
+}
+
+type Bedroom {
+    id: ID! @unique
+    name: TranslatableString
+    type: BedroomType
+    singleBed: Int!
+    doubleBed: Int!
+}
+
+type Bathroom {
+    id: ID! @unique
+    name: TranslatableString
+    type: BathroomType
+    toilet: Int!
+    bath: Int!
+    shower: Int!
+}
+
+type BathroomType {
+    id: ID! @unique
+    name: String
+}
+type BedroomType {
+    id: ID! @unique
+    name: String
+}
+type AccommodationFeature {
+    id: ID! @unique
+    name: String
+}
+type Site {
+    id: ID! @unique
+    name: String!
+}
+
+type Photo {
+    id: ID! @unique
+    url: String!
+    name: TranslatableString!
+}
+
+type AccommodationType {
+    id: ID! @unique
+    name: String
+}

@@ -1,0 +1,121 @@
+{
+  "Name": "LoginWithSpecificUser",
+  "CreationDate": "2018-12-29",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "starting login",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "medium",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.voetbalprimeur.nl/",
+      "Value": ""
+    },
+    {
+      "Command": "assertTitle",
+      "Target": "De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "!errorignore"
+    },
+    {
+      "Command": "verifyElementPresent",
+      "Target": "//*[@class=\"logout\"]",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "!errorignore"
+    },
+    {
+      "Command": "if",
+      "Target": "${!statusOK}",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "The logout element is there, but it shouldn't be because the user isn't logged in yet",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"logout\"]",
+      "Value": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": ""
+    },
+    {
+      "Command": "endif",
+      "Target": "",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"login\"]/a",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=login",
+      "Value": ""
+    },
+    {
+      "Command": "type",
+      "Target": "name=username",
+      "Value": "keesvanwees"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "document.getElementsByName(\"username\")[0].value",
+      "Value": "inputname"
+    },
+    {
+      "Command": "store",
+      "Target": "keesvanwees",
+      "Value": "name"
+    },
+    {
+      "Command": "type",
+      "Target": "name=password",
+      "Value": "test123"
+    },
+    {
+      "Command": "click",
+      "Target": "name=login",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "login succeeded",
+      "Value": "green"
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"profile_user\"]",
+      "Value": ""
+    },
+    {
+      "Command": "assertText",
+      "Target": "//*[@class=\"uname\"]",
+      "Value": "${inputname}"
+    },
+    {
+      "Command": "echo",
+      "Target": "Logging in and validated username with username used to log in",
+      "Value": "#shownotification"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "extends": ["tslint-config-oberon"],
+    "linterOptions": { "exclude": "**/**.js" },
+    "rules": {
+        "indent": [true, "spaces", 4],
+        "space-in-parens": false,
+        "semicolon": [true, "always", "ignore-bound-class-methods"]
+    }
+}

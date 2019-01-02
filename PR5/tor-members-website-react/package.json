@@ -1,0 +1,127 @@
+{
+    "name": "tor-members-website-react",
+    "version": "0.1.0",
+    "license": "MIT",
+    "scripts": {
+        "start": "run-p start:*",
+        "start:razzle": "razzle start",
+        "watch-queries": "npm run schema:download && npm run generate-schema-types",
+        "schema:download": "apollo schema:download --endpoint=http://localhost:4000",
+        "generate-schema-types": "apollo codegen:generate --queries=\"./src/**/*.tsx\" --schema=./schema.json --target=typescript ./src/entities/schemaTypes.ts --outputFlat",
+        "build": "razzle build",
+        "test": "razzle test --env=jsdom",
+        "precommit": "check-dependencies && CI=1 lint-staged",
+        "prod": "npm run build && NODE_ENV=production node build/server.js"
+    },
+    "dependencies": {
+        "apollo-boost": "^0.1.16",
+        "apollo-cache-inmemory": "^1.3.11",
+        "apollo-client": "^2.4.7",
+        "apollo-link": "^1.2.4",
+        "apollo-link-context": "^1.0.10",
+        "apollo-link-error": "^1.1.2",
+        "apollo-link-http": "^1.5.7",
+        "apollo-link-state": "^0.4.2",
+        "express": "^4.16.3",
+        "formik": "^1.3.1",
+        "graphql": "^14.0.2",
+        "graphql-tools": "^4.0.3",
+        "immutability-helper": "^2.8.1",
+        "morgan": "^1.9.0",
+        "node-fetch": "^2.2.0",
+        "path-to-regexp": "^2.4.0",
+        "raven-js": "^3.26.4",
+        "razzle": "^2.4.0",
+        "react": "^16.7.0-alpha.2",
+        "react-adopt": "^0.6.0",
+        "react-apollo": "^2.2.4",
+        "react-click-outside": "github:tj/react-click-outside",
+        "react-dom": "^16.7.0-alpha.2",
+        "react-helmet-async": "^0.1.0",
+        "react-image-loading": "^0.2.0",
+        "react-loadable": "^5.5.0",
+        "react-outside-click-handler": "^1.2.2",
+        "react-powerplug": "^1.0.0",
+        "react-responsive-modal": "^3.5.1",
+        "react-router": "^4.3.1",
+        "react-router-config": "^4.4.0-beta.1",
+        "react-router-dom": "^4.3.1",
+        "react-sortable-hoc": "^0.8.4",
+        "react-truncate": "^2.4.0",
+        "styled-components": "^4.1.1",
+        "yup": "^0.26.6"
+    },
+    "devDependencies": {
+        "@types/enzyme": "^3.1.12",
+        "@types/express": "^4.16.0",
+        "@types/graphql": "^14.0.3",
+        "@types/jest": "^22.2.3",
+        "@types/morgan": "^1.7.35",
+        "@types/node": "^8.10.21",
+        "@types/react": "^16.7.6",
+        "@types/react-dom": "^16.0.9",
+        "@types/react-helmet": "^5.0.6",
+        "@types/react-helmet-async": "0.0.0",
+        "@types/react-outside-click-handler": "^1.2.0",
+        "@types/react-router-config": "^1.0.9",
+        "@types/react-router-dom": "^4.3.0",
+        "@types/styled-components": "^4.1.0",
+        "@types/webpack-env": "^1.13.2",
+        "@types/yup": "^0.26.1",
+        "check-dependencies": "^1.1.0",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
+        "enzyme-to-json": "^3.3.4",
+        "husky": "^0.14.3",
+        "jest": "^23.4.2",
+        "jest-styled-components": "^5.0.1",
+        "lint-staged": "^6.1.1",
+        "npm-run-all": "^4.1.3",
+        "raf": "^3.4.0",
+        "razzle-plugin-typescript": "^2.2.0",
+        "ts-jest": "23.1.2",
+        "ts-loader": "4.4.2",
+        "tslint": "^5.12.0",
+        "tslint-config-oberon": "^1.0.4",
+        "tslint-config-prettier": "^1.15.0",
+        "tslint-loader": "^3.5.3",
+        "tslint-react": "^3.6.0",
+        "typescript": "^3.2.2",
+        "typescript-styled-plugin": "^0.12.0",
+        "webpack": "^4.16.2"
+    },
+    "lint-staged": {
+        "*.ts?(x)": [
+            "tslint --fix",
+            "npm t -- --findRelatedTests",
+            "git add"
+        ]
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/svgMock.js"
+        },
+        "transform": {
+            ".(ts|tsx)": "ts-jest",
+            "^.+\\.css$": "<rootDir>/node_modules/razzle/config/jest/cssTransform.js",
+            "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/node_modules/razzle/config/jest/fileTransform.js"
+        },
+        "testMatch": [
+            "<rootDir>/src/**/__tests__/**/*.(ts|js)?(x)",
+            "<rootDir>/src/**/?(*.)(spec|test).(ts|js)?(x)"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "json"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,ts,tsx}"
+        ],
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
+    },
+    "description": "TOR Members Website"
+}

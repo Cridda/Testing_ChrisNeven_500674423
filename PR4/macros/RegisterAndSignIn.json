@@ -1,0 +1,196 @@
+{
+  "Name": "RegisterAndSignIn",
+  "CreationDate": "2018-12-29",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "starting register",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "medium",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.voetbalprimeur.nl/",
+      "Value": ""
+    },
+    {
+      "Command": "assertTitle",
+      "Target": "De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"login\"]/a",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"ui-id-4\"]",
+      "Value": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "Math.random().toString(36).substring(7)",
+      "Value": "randomString"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "Math.random().toString(30).substring(4)",
+      "Value": "randomPassword"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "`${randomString}@hotmail.com`",
+      "Value": "email"
+    },
+    {
+      "Command": "type",
+      "Target": "//*[@id=\"registerForm\"]/div/input[1]",
+      "Value": "${randomString}"
+    },
+    {
+      "Command": "type",
+      "Target": "//*[@id=\"registerForm\"]/div/div[1]/input",
+      "Value": "${email}"
+    },
+    {
+      "Command": "type",
+      "Target": "//*[@id=\"registerForm\"]/div/input[2]",
+      "Value": "${randomPassword}"
+    },
+    {
+      "Command": "type",
+      "Target": "//*[@id=\"registerForm\"]/div/input[3]",
+      "Value": "${randomPassword}"
+    },
+    {
+      "Command": "store",
+      "Target": "${randomString}",
+      "Value": "!csvLine"
+    },
+    {
+      "Command": "store",
+      "Target": "${randomPassword}",
+      "Value": "!csvLine"
+    },
+    {
+      "Command": "csvSave",
+      "Target": "testuserscsv",
+      "Value": ""
+    },
+    {
+      "Command": "select",
+      "Target": "//*[@id=\"registerForm\"]/div/select[1]",
+      "Value": "label=Ajax"
+    },
+    {
+      "Command": "select",
+      "Target": "//*[@id=\"registerForm\"]/div/select[2]",
+      "Value": "label=Arsenal FC"
+    },
+    {
+      "Command": "selectFrame",
+      "Target": "//*[@id=\"popupRecaptcha\"]/div/div/iframe",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "/html/body/div[2]/div[3]/div[1]/div/div/span/div[5]",
+      "Value": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": ""
+    },
+    {
+      "Command": "selectFrame",
+      "Target": "relative=top",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=agree_1",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "name=register",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "register succeeded",
+      "Value": "green"
+    },
+    {
+      "Command": "echo",
+      "Target": "logging in with created user",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=ui-id-3",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "name=login",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"close_icon\"]",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": " //*[@id=\"login\"]/a[1]",
+      "Value": ""
+    },
+    {
+      "Command": "label",
+      "Target": " //*[@id=\"login\"]/a[1]",
+      "Value": ""
+    },
+    {
+      "Command": "assertText",
+      "Target": " //*[@class=\"uname\"]",
+      "Value": " ${randomString}"
+    },
+    {
+      "Command": "echo",
+      "Target": "user logged in successfully",
+      "Value": "green"
+    },
+    {
+      "Command": "echo",
+      "Target": "Registered a user and logged in the user successfully",
+      "Value": "#shownotification"
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Logging out",
+      "Value": "echo"
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"logout\"]",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Logged out successfully",
+      "Value": ""
+    }
+  ]
+}

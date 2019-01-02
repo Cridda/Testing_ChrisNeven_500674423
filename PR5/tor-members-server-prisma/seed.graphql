@@ -1,0 +1,27 @@
+mutation {
+    user1: createUser(
+        data: {
+            email: "brigite@prisma.io"
+            firstName: "Alice"
+            lastName: "from Paris"
+            phone: "6024949490"
+            password: "$2b$10$dqyYw5XovLjpmkYNiRDEWuwKaRAvLaG45fnXE5b3KTccKZcRPka2m" # "secret42"
+            address: { create: { address: "Fokkerlaan 9", postcode: "1085JA", city: "Amstelveen" } }
+        }
+    ) {
+        id
+    }
+
+    user2: createUser(
+        data: {
+            email: "bobbh@prisma.io"
+            firstName: "Bob"
+            lastName: "Andre"
+            phone: "939382718"
+            password: "$2b$10$o6KioO.taArzboM44Ig85O3ZFZYZpR3XD7mI8T29eP4znU/.xyJbW" # "secret43"
+            address: { create: { address: "Fokkerlaan 9", postcode: "1085JA", city: "Amstelveen" } }
+        }
+    ) {
+        id
+    }
+}

@@ -1,0 +1,161 @@
+{
+  "Name": "BecomeFanOfClubs",
+  "CreationDate": "2018-12-29",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "starting with logging in",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "medium",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.voetbalprimeur.nl/",
+      "Value": ""
+    },
+    {
+      "Command": "assertTitle",
+      "Target": "De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"login\"]/a",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=login",
+      "Value": ""
+    },
+    {
+      "Command": "type",
+      "Target": "name=username",
+      "Value": "keesvanwees"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "document.getElementsByName(\"username\")[0].value",
+      "Value": "inputname"
+    },
+    {
+      "Command": "type",
+      "Target": "name=password",
+      "Value": "test123"
+    },
+    {
+      "Command": "click",
+      "Target": "name=login",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "user logged in",
+      "Value": "green"
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@title=\"Clubs\"]",
+      "Value": ""
+    },
+    {
+      "Command": "csvRead",
+      "Target": "newinfo.csv",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "1",
+      "Value": "loopcounter"
+    },
+    {
+      "Command": "while",
+      "Target": "(${loopcounter} <= ${!csvReadMaxRow})",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "fast",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "${!csvReadLineNumber}+1",
+      "Value": "!csvReadLineNumber"
+    },
+    {
+      "Command": "echo",
+      "Target": "status = ${!csvReadStatus}, nextLine = ${!csvReadLineNumber}, loopcounter = ${loopcounter}",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "clubAboutToBecomeFanOf = ${!COL1}",
+      "Value": ""
+    },
+    {
+      "Command": "type",
+      "Target": "id=club_input",
+      "Value": "${!COL1}"
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"ui-id-5\"]/li[1]/a",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"follow_player\"]/button",
+      "Value": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "1500",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@title=\"Clubs\"]",
+      "Value": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "${loopcounter}+1",
+      "Value": "loopcounter"
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "!errorIgnore"
+    },
+    {
+      "Command": "csvRead",
+      "Target": "newinfo.csv",
+      "Value": "loopcounter"
+    },
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "!errorIgnore"
+    },
+    {
+      "Command": "endWhile",
+      "Target": "",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Became fan of ${!csvReadMaxRow} clubs!",
+      "Value": "#shownotification"
+    }
+  ]
+}

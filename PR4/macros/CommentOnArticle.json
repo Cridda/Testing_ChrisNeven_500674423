@@ -1,0 +1,76 @@
+{
+  "Name": "CommentOnArticle",
+  "CreationDate": "2018-12-29",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "Starting CommentOnArticle",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Check if user is logged in",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "medium",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "verifyElementPresent",
+      "Target": "//*[@class=\"logout\"]",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "User is logged in",
+      "Value": "green"
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@class=\"news\"]",
+      "Value": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "document.getElementById(\"cat_news1\").childElementCount",
+      "Value": "amountOfArticles"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "Math.floor(Math.random() * ${amountOfArticles}) + 1  ",
+      "Value": "randomArticle"
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"cat_news1\"]/li[${randomArticle}]/a",
+      "Value": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "gubQkH_dpi_192.png",
+      "Value": ""
+    },
+    {
+      "Command": "type",
+      "Target": "name=comment",
+      "Value": "Niet eens."
+    },
+    {
+      "Command": "sendKeys",
+      "Target": "name=submit",
+      "Value": "${KEY_ENTER}"
+    },
+    {
+      "Command": "click",
+      "Target": "name=submit",
+      "Value": "${KEY_ENTER}"
+    },
+    {
+      "Command": "echo",
+      "Target": "Added a comment to a random article",
+      "Value": "#shownotification"
+    }
+  ]
+}

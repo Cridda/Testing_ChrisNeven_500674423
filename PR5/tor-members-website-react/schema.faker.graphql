@@ -1,0 +1,70 @@
+type User {
+    firstName: String! @fake(type: firstName, locale:nl)
+    lastName: String! @fake(type: lastName, locale:nl)
+}
+
+type City {
+    id: ID
+    name: String @fake(type: city, locale: nl)
+}
+
+type TranslatableString {
+    en: String @fake(type:lorem, options:{loremSize: sentence})
+    nl: String @fake(type:lorem, options:{loremSize: sentence})
+    de: String @fake(type:lorem, options:{loremSize: sentence})
+}
+
+type Address {
+    address: String! @fake(type:streetAddress, locale:nl)
+    postcode: String! @fake(type:zipCode, locale:nl)
+    city: String! @fake(type:city, locale:nl)
+}
+
+type Photo {
+    id:ID!
+    url: String! @examples(values: ["https://source.unsplash.com/random?beachhouse", "https://source.unsplash.com/random?house", "https://source.unsplash.com/random?home", "https://source.unsplash.com/random?hotel", "https://source.unsplash.com/random?city"])
+    name: TranslatableString! @fake(type:lorem, options:{loremSize:sentence})
+}
+
+type AccommodationType {
+    id:ID
+    name: String @examples(values:["Vakantiehuisje", "Hotel", "Kamperen"])
+}
+
+type Accommodation {
+    # bookings: [Booking!]
+		id:ID!
+    name: String! @fake(type:lorem, options:{loremSize:sentence})
+    code: Int!
+    type: AccommodationType!
+    city: City!
+    description: TranslatableString!
+    slug: String! @fake(type:lorem, options:{loremSize:word})
+
+    livingArea: Int! @fake(type: money, options: { minMoney: 10, maxMoney: 100 })
+    outsideArea: Int! @fake(type: money, options: { minMoney: 10, maxMoney: 100 })
+
+    contactPerson: String! @fake(type:fullName, locale:nl)
+    contactPhone: String! @fake(type: phoneNumber, locale: nl)
+    keyAddress: Address!
+    address: Address!
+
+    minCapacity: Int! @fake(type: money, options: { minMoney: 1, maxMoney: 4 })
+    maxCapacity: Int!@fake(type: money, options: { minMoney: 9, maxMoney: 15 })
+
+    tipDescription: TranslatableString!
+
+    photos: [Photo]!
+}
+
+type Query {
+    aboutMe: User!
+    accommodation(id: ID!): Accommodation!
+    accommodations: [Accommodation!]!
+    cities: [City!]
+    accommodationTypes:[AccommodationType!]
+  	
+		
+    # recentEvents: [Event!]
+}
+

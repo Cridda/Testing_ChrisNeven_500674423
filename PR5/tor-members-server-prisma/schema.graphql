@@ -1,0 +1,230 @@
+type User {
+    id: ID!
+    email: String!
+    firstName: String!
+    lastName: String!
+    address: Address!
+    phone: String!
+    accommodations: [Accommodation!]!
+}
+
+type Address {
+    id: ID
+    address: String!
+    postcode: String!
+    city: String!
+}
+
+input AddressInput {
+    address: String!
+    postcode: String!
+    city: String!
+}
+
+type TranslatableString {
+    id: ID!
+    en: String
+    nl: String
+    de: String
+}
+
+type Bedroom {
+    id: ID!
+    name: TranslatableString!
+    type: BedroomType!
+    singleBed: Int!
+    doubleBed: Int!
+}
+type BedroomType {
+    id: ID!
+    name: String!
+}
+
+type BathroomType {
+    id: ID!
+    name: String!
+}
+
+type Bathroom {
+    id: ID!
+    type: BathroomType!
+    name: TranslatableString!
+    toilet: Int!
+    bath: Int!
+    shower: Int!
+}
+type AccommodationFeature {
+    id: ID!
+    name: String
+}
+type Site {
+    id: ID!
+    name: String!
+}
+
+type City {
+    id: ID
+    name: String
+}
+
+type Accommodation {
+    id: ID!
+    name: String!
+    code: Int!
+    type: AccommodationType!
+    city: City!
+    description: TranslatableString!
+    slug: String!
+    livingArea: Int!
+    outsideArea: Int!
+    contactPerson: String!
+    contactPhone: String!
+    keyAddress: Address!
+    address: Address!
+    minCapacity: Int!
+    maxCapacity: Int!
+    sites: [Site!]
+    features: [AccommodationFeature!]
+    bathrooms: [Bathroom!]
+    bedrooms: [Bedroom!]
+    photos: [Photo!]!
+}
+
+type Photo {
+    id: ID!
+    url: String!
+    name: TranslatableString!
+}
+
+type AccommodationType {
+    id: ID!
+    name: String
+}
+
+type AuthPayload {
+    token: String!
+    user: User!
+}
+
+input CityInput {
+    name: String
+}
+
+input TranslatableStringInput {
+    en: String
+    nl: String
+    de: String
+}
+
+input AccommodationTypeInput {
+    name: String
+}
+
+input AddressInput {
+    address: String
+    postcode: String
+    city: String
+}
+
+input AccommodationInput {
+    name: String
+    type: AccommodationTypeInput
+    city: CityInput
+    description: TranslatableStringInput
+    slug: String
+    livingArea: Int
+    outsideArea: Int
+    contactPerson: String
+    contactPhone: String
+    keyAddress: AddressInput
+    address: AddressInput
+    minCapacity: Int
+    maxCapacity: Int
+    photos: PhotosInput
+    sites: [SiteInput!]
+    features: [AccommodationFeatureInput]
+    bathrooms: [BathroomInput]
+    bedrooms: [BedroomInput]
+}
+
+input BedroomInput {
+    name: TranslatableStringInput!
+    type: BedroomTypeInput!
+    singleBed: Int!
+    doubleBed: Int!
+}
+
+input BedroomTypeInput {
+    id: ID!
+}
+input BathroomInput {
+    name: TranslatableStringInput!
+    type: BathroomTypeInput!
+    toilet: Int!
+    bath: Int!
+    shower: Int!
+}
+
+input BathroomTypeInput {
+    id: ID!
+}
+
+input AccommodationFeatureInput {
+    id: ID
+}
+
+input SiteInput {
+    id: ID
+}
+
+input PhotoInput {
+    url: String
+    name: TranslatableStringInput
+}
+
+input PhotosInput {
+    photos: [PhotoInput!]!
+}
+
+type Query {
+    me: User
+    accommodation(id: ID!): Accommodation
+    sites: [Site!]!
+    features: [AccommodationFeature!]!
+    bedroomTypes: [BedroomType!]!
+    bathroomTypes: [BathroomType!]!
+    accommodations: [Accommodation!]!
+    users: [User!]!
+}
+
+type Mutation {
+    signup(
+        email: String!
+        password: String!
+        firstName: String
+        lastName: String
+        address: AddressInput
+        phone: String
+    ): AuthPayload!
+    login(email: String!, password: String!): AuthPayload!
+    createAccommodation(
+        name: String!
+        code: Int
+        type: AccommodationTypeInput!
+        city: CityInput!
+        description: TranslatableStringInput!
+        slug: String!
+        livingArea: Int!
+        outsideArea: Int!
+        contactPerson: String!
+        contactPhone: String!
+        keyAddress: AddressInput!
+        address: AddressInput!
+        minCapacity: Int!
+        maxCapacity: Int!
+        photos: PhotosInput
+    ): Accommodation!
+    updateAccommodation(accommodationId: String!, input: AccommodationInput!): Accommodation!
+    createBedroom(accommodationId: ID!, bedroom: BedroomInput!): [Bedroom!]
+    createBathroom(accommodationId: ID!, bathroom: BathroomInput!): [Bathroom!]
+}

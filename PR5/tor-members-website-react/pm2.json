@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "name"         : "oberon-website",
+    "script"       : "./build/server.js",
+    "exec_mode"    : "cluster",
+    "env"          : { "NODE_ENV": "production" }
+  }]
+}

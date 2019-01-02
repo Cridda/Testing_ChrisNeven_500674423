@@ -1,0 +1,30 @@
+{
+	"creationDate": "2018-12-29",
+	"name": "TESTSUITE_Voetbalprimeur",
+	"macros": [
+		{
+			"macro": "RegisterAndSignIn",
+			"loops": 1
+		},
+		{
+			"macro": "BecomeFanOfClubs",
+			"loops": 1
+		},
+		{
+			"macro": "UnfanClubs",
+			"loops": 1
+		},
+		{
+			"macro": "LoginWithSpecificUser",
+			"loops": 1
+		},
+		{
+			"macro": "ReadArticle",
+			"loops": 1
+		},
+		{
+			"macro": "CommentOnArticle",
+			"loops": 1
+		}
+	]
+}

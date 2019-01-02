@@ -1,0 +1,56 @@
+{
+  "Name": "ReadArticle",
+  "CreationDate": "2018-12-29",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "medium",
+      "Value": "!replayspeed"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.voetbalprimeur.nl/",
+      "Value": ""
+    },
+    {
+      "Command": "assertTitle",
+      "Target": "De snelste en meest complete voetbalnieuwssite | VoetbalPrimeur.nl",
+      "Value": ""
+    },
+    {
+      "Command": "storeTitle",
+      "Target": "//*[@id=\"list_featured\"]/li[1]/article/a/figure/img",
+      "Value": "articleName"
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"list_featured\"]/li[1]/article/a/figure",
+      "Value": ""
+    },
+    {
+      "Command": "storeTitle",
+      "Target": "",
+      "Value": "articleTitle"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.voetbalprimeur.nl/",
+      "Value": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//*[@id=\"list_featured\"]/li[1]/article/a/figure",
+      "Value": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "${articleTitle}",
+      "Value": "#shownotification"
+    },
+    {
+      "Command": "echo",
+      "Target": "ReadArticle is completed.",
+      "Value": "#shownotification"
+    }
+  ]
+}
