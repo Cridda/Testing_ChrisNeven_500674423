@@ -1,13 +1,14 @@
-Student: Chris Neven 
-Studentnummer: 500674423
-Docent: Tim Visser
-Klas: SE201
-Datum: 25 december 2018
+
+- Student: Chris Neven
+- Studentnummer: 500674423
+- Docent: Tim Visser
+- Klas: SE201
+- Datum: 25 december 2018
 
 
 Welkom bij practicum 4 opdracht van het vak testen. Het doel van deze opdracht is om mijn kennis en vaardigheden van het automatisch end-to-end testen van User Interfaces te verbreden en te verdiepen. Ik heb hiervoor Kantu-IDE gebruikt. Als usecase voor het practicum is een van mijn dagelijks bezochte websites gebruikt, namelijk: http://www.voetbalprimeur.nl. De naam zegt hopelijk genoeg over het onderwerp van de website.
 
-#Instructies:
+# Instructies:
 
 1. 	Zorg ervoor dat Kantu voor Chrome geïnstalleerd is.
 2. 	Importeer alle macro's uit de macros folder in Kantu
